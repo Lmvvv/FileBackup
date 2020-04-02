@@ -1,0 +1,496 @@
+jbpo006.bat
+	@tiym = 202001
+	@data_file_id = WGS365.TXT
+	@kensu_file_id = WGS365K.TXT
+	@bcp_exe_dir = D:\SQLTOOLS\BINN
+	
+jbpo007.bat
+	@work_db		GDSJWK
+	@data_tbl_id	WGS370
+	@kensu_tbl_id	WGS370K
+	@tiym			202001
+	@data_file_dir	S:\BPOul
+	
+jgyj441.bat 
+	@work_db		GDSJWK
+	@data_tbl_id	WGS305H
+	@data_file_id	WGS305H.TXT
+	@kensu_file_id	WGS305HK.TXT
+	@sjgymid		503
+	@tiym\@data_tiym	202001
+	@data_file_dir	S:\spnetul 
+	
+jgyj442.bat
+	@work_db		GDSJWK
+	@data_tbl_id	WGS305H
+	@kensu_tbl_id	WGS305HK
+	@sjgymid		503
+	@tiym			202001
+	@data_sonzai	1
+	
+jgyj451.bat 
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS320H
+	@kensu_tbl_id	WGS320HK
+	@data_file_id	WGS320H.TXT
+	@kensu_file_id	WGS320HK.TXT
+	@sjgymid		504
+	@tiym\@data_tiym	202001
+	@data_file_dir	S:\spnetul
+	清空表：TRUNCATE TABLE [GDSJWK]..[WGS320H]
+			TRUNCATE TABLE [GDSJWK]..[WGS320HK]
+	从S:\spnetul\WGS320H.TXT、S:\spnetul\WGS320HK.TXT读取数据插入两张表
+	
+jgyj452.bat 
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS320H
+	@kensu_tbl_id	WGS320HK
+	@sjgymid		'504'
+	@p_upkbn		'5'
+	@tiym\@data_tiym	202001	
+	@data_sonzai	1
+
+jgyj461.bat
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS335H
+	@kensu_tbl_id	WGS335HK
+	@data_file_id	WGS335H.TXT
+	@kensu_file_id	WGS335HK.TXT
+	@sjgymid		'505'
+	@tiym\@data_tiym	202001
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE [GDSJWK]..[WGS335H] 然后读取S:\spnetul\WGS335H.TXT数据，插入[GDSJWK]..[WGS335H]
+	TRUNCATE TABLE [GDSJWK]..[WGS335HK] 然后读取S:\spnetul\WGS335HK.TXT数据，插入[GDSJWK]..[WGS335HK]
+
+jgyj462.bat	
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS335H
+	@kensu_tbl_id	WGS335HK
+	@sjgymid		'505'
+	@p_upkbn		'5'
+	@tiym			'202001'
+	@data_tiym		'201911'
+
+jgyj471.bat	
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS325H
+	@kensu_tbl_id	WGS325HK
+	@data_file_id	WGS325H.TXT
+	@kensu_file_id	WGS325HK.TXT
+	@sjgymid		'506'
+	@p_upkbn		'5'
+	@tiym			'202001'
+	@data_tiym		'201911'
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE [GDSJWK]..[WGS325H] 然后读取S:\spnetul\WGS325H.TXT数据，插入[GDSJWK]..[WGS325H]
+	TRUNCATE TABLE [GDSJWK]..[WGS325HK] 然后读取S:\spnetul\WGS325HK.TXT数据，插入[GDSJWK]..[WGS325HK]
+	
+jgyj472.bat
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS325H
+	@kensu_tbl_id	WGS325HK
+	@data_file_id	WGS325H.TXT
+	@kensu_file_id	WGS325HK.TXT
+	@sjgymid		'506'
+	[GDSJWK]..[WGS325H]kyoku = '16' misecd = '015' 查出来的数据，放入
+	临时表#GYP205Tmp，将临时表#GYP205Tmp中sumkbn <> 9的插入[GDGYM]..[GS325]；sumkbn = 9的插入[GDGYM]..[GS326]。
+
+jgyj473.bat
+	@p_syorikbn		'5'
+	@tiym			'202001'
+
+jgyj481.bat
+	@IMPORT_DIR		S:\spnetul
+	@IMPORT_FILE	WGJ025H.txt
+	S:\spnetul\WGJ025H.txt --> #WKGJ025 --> [GDGYM]..[GJ025]
+
+jgyj482.bat
+	@@IMPORT_DIR	S:\spnetul
+	@@dat_file		WGJ025H.txt
+	S:\spnetul\WGJ025H.txt --> #WKGJ025K 修改 [GDGYM]..[gc055]
+
+jgyj318.bat	gyp540
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGT200H
+	@kensu_tbl_id	WGT200HK
+	@data_file_id	WGT200H.TXT
+	@kensu_file_id	WGT200HK.TXT
+	@sjgymid		'523'
+	@tiym\@data_tiym	202001
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE [GDSJWK]..[WGT200H]
+	TRUNCATE TABLE [GDSJWK]..[WGT200HK]
+
+jgyj319.bat	gyp545
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGT200H
+	@kensu_tbl_id	WGT200HK
+	@sjgymid		'523'
+	@tiym\@data_tiym	202001
+	UPDATE GT101 FROM  GT101 INNER JOIN [GDSJWK]..[WGT200H]
+	UPDATE GT101C FROM  GT101 INNER JOIN [GDSJWK]..[WGT200Hk]
+
+jgyj328.bat	gyp550
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGT300H
+	@kensu_tbl_id	WGT300HK
+	@data_file_id	WGT300H.TXT
+	@kensu_file_id	WGT300HK.TXT
+	@sjgymid		'524'
+	@tiym\@data_tiym	'202001'
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE [GDSJWK]..[WGT300H],读取S:\spnetul\WGT300H.TXT的数据，插入表中
+	TRUNCATE TABLE [GDSJWK]..[WGT300HK],读取S:\spnetul\WGT300HK.TXT的数据，插入表中
+	UPDATE [GDGYM]..[GC055] WHERE 
+		tiym = [GDSJWK]..[WGT300HK]tiym 
+		kyoku = [GDSJWK]..[WGT300HK]kyoku 
+		misecd = [GDSJWK]..[WGT300HK]misecd 
+		sjgymid = [GDSJWK]..[WGT300HK]sjgymid
+	
+jgyj329.bat	gyp555
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGT300H
+	@kensu_tbl_id	WGT300HK
+	@sjgymid		'524'
+	@tiym\@data_tiym	'202001'
+	[GDSJWK]..[WGT300H] --> [GDGYM]..[GT200]
+		tiym = '202001'
+		kyoku = '16' 
+		misecd = '015'
+	UPDATE GC055
+	将S:\spnetul\WGT300H.TXT 、S:\spnetul\WGT300HK.TXT的第一列修改的与[GDGYM]..[GS010C]的 MAX ( tiym )一致
+
+jbpo012.bat bpo010
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS375H
+	@kensu_tbl_id	WGS375HK
+	@data_file_id	WGS375H.TXT
+	@kensu_file_id	WGS375HK.TXT
+	@sjgymid		'525'
+	@tiym\@data_tiym	'202001'	GDGYM..GC005V02
+	@data_file_dir	S:\BPOul
+	TRUNCATE TABLE GDSJWK..WGS375H		S:\BPOul\WGS375H.TXT
+	TRUNCATE TABLE GDSJWK..WGS375HK		S:\BPOul\WGS375HK.TXT
+	UPDATE [GDGYM]..[GC055] 
+		SET sjrvfrg = 1 -- 送受信PGM処理ﾌﾗｸﾞ (0=未処理, 1=処理済)
+		,upnitiji = dbo.GETDATE2 () -- 最終更新日時
+		,upclient = @p_system -- 最終更新ｸﾗｲｱﾝﾄIPｱﾄﾞﾚｽ
+		WHERE
+			tiym = @tiym 
+			AND kyoku = @kensu_tbl_kyoku 
+			AND misecd = @kensu_tbl_misecd 
+			AND sjgymid = @sjgymid
+
+jbpo012.bat bpo011
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS375H
+	@kensu_tbl_id	WGS375HK
+	@sjgymid		'525'
+	@p_upkbn		'5'
+	@tiym\@data_tiym	'202001'	GDGYM..GC005V02
+	GDSJWK..WGS375H --> GDGYM..GS375	先delete，然后insert
+
+
+jgyj511.bat gyp170
+	@p_syorikbn		K
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS330k
+	@kensu_tbl_id	WGS330KK
+	@data_file_id	WGS330K.TXT
+	@kensu_file_id	WGS330KK.TXT
+	@sjgymid		'608'
+	@tiym\@data_tiym	'202001'	GDGYM..GS010C
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGS330K		S:\spnetul\WGS330K.TXT
+	TRUNCATE TABLE GDSJWK..WGS330Kk		S:\spnetul\WGS330KK.TXT
+
+jgyj512.bat gyp175
+	@p_syorikbn		K
+	@p_system		SPNET
+	@data_tbl_id	WGS330k
+	@kensu_tbl_id	WGS330KK
+	@sjgymid		'608'
+	@tiym\@data_tiym	'202001'	GDGYM..GS010C
+	@data_sonzai	1
+	DELETE FROM GS330
+	DELETE FROM GS330S
+	GDSJWK..WGS330K --	GDGYM..GS330
+	GDSJWK..WGS330K --	GDGYM..GS330S
+	DELETE FROM GS331
+	GDSJWK..WGS330K --	GDGYM..GS331
+	GDSJWK..WGS330K --	GDGYM..GS331S
+	UPDATE GC055
+		SET
+			sjrvfrg = 1 -- 送受信PGM処理ﾌﾗｸﾞ (0=未処理,1=処理済)
+			, sjjbfrg = 1 -- 検証処理PGMﾌﾗｸﾞ   (0=未処理,1=処理済)
+			, sjsmfrg = 1 -- F/L作成PGM処理ﾌﾗｸﾞ(0=未処理,1=処理済)
+	update GDSJWK..WGS330K set tiym = '@tiym' ;
+
+jgyj513.bat gyp830
+	@p_syorikbn		'6'
+	@tiym\@data_tiym	'202001'	GDGYM..GC005V02
+	@S10_CNT		1	-- ＨＡＮＤＳ件数
+
+	
+jgyj521.bat gyp200 'K','SPNET';
+	@p_syorikbn		K
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS325k
+	@kensu_tbl_id	WGS325KK
+	@data_file_id	WGS325K.TXT
+	@kensu_file_id	WGS325KK.TXT
+	@sjgymid		'606'
+	@tiym\@data_tiym	'202001'	GDGYM..GS010C
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGS325K		S:\spnetul\WGS325K.TXT
+	TRUNCATE TABLE GDSJWK..WGS325Kk		S:\spnetul\WGS325KK.TXT
+	UPDATE GC055
+        SET  sjrvfrg = 1  -- 送受信PGM処理ﾌﾗｸﾞ (0=未処理, 1=処理済)
+	
+jgyj522.bat gyp205 'K','SPNET';
+	@p_syorikbn		K
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS325k
+	@kensu_tbl_id	WGS325KK
+	@sjgymid		'606'
+	@tiym			'202001'	GDGYM..GS010C
+	@data_tiym
+	GDSJWK..WGS325K --> 临时表GYP205Tmp --> GS325 sumkbn <> 9
+										--> GS326 sumkbn = 9
+	UPDATE GC055 SET sjrvfrg = 1    -- 送受信PGM処理ﾌﾗｸﾞ (0=未処理,1=処理済)
+	
+jgyj523.bat gyp860 '6';
+	@p_syorikbn		'6'
+	@tiym			'202001'
+	数据没验证
+
+jgyj531.bat gyp210 'K','SPNET';
+	@p_syorikbn		K
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS305k
+	@kensu_tbl_id	WGS305KK
+	@data_file_id	WGS305K.TXT
+	@kensu_file_id	WGS305KK.TXT
+	@sjgymid		'603'
+	@tiym\@data_tiym	'202001'	GDGYM..GS010C
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGS305K		S:\spnetul\WGS305K.TXT
+	TRUNCATE TABLE GDSJWK..WGS305Kk		S:\spnetul\WGS305KK.TXT
+	UPDATE GC055 
+		SET sjrvfrg = 1 -- 送受信PGM処理ﾌﾗｸﾞ (0=未処理, 1=処理済)
+	
+jgyj532.bat gyp215 'K','SPNET';
+	@p_syorikbn		K
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS305k
+	@kensu_tbl_id	WGS305KK
+	@sjgymid		'603'
+	@tiym\@@data_tiyy	'202001'	GDGYM..GS010C
+	@data_ztiyy		'201912'
+	GDSJWK..WGS305K --> GDGYM..GS305
+	UPDATE GC055
+        SET
+            sjrvfrg = 1  -- 送受信PGM処理ﾌﾗｸﾞ (0=未処理,1=処理済)
+          , sjjbfrg = 1  -- 検証処理PGMﾌﾗｸﾞ   (0=未処理,1=処理済)
+          , sjsmfrg = 1  -- F/L作成PGM処理ﾌﾗｸﾞ(0=未処理,1=処理済)
+	
+jgyj533.bat gyp840;
+	@tougetu		'202001'
+	@tiym			'201911'
+	@tiym_next		'201912'
+	@HHPJSTR		'200204'
+	@bcp_fir_dir	R:\GDMail
+	@S01_CNT		40
+	@S02_CNT		0
+	@S03_CNT		0
+	@upkbn			'6'
+	@upkbn_gs290	'5'
+
+jgyj518.bat gyp540 'K','SPNET';
+	@p_syorikbn		K
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGT200k
+	@kensu_tbl_id	WGT200KK
+	@data_file_id	WGT200K.TXT
+	@kensu_file_id	WGT200KK.TXT
+	@sjgymid		'623'
+	@tiym\@data_tiym	'202001'	GDGYM..GS010C
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGT200K		S:\spnetul\WGT200K.TXT
+	TRUNCATE TABLE GDSJWK..WGT200Kk		S:\spnetul\WGT200KK.TXT
+	
+jgyj519.bat gyp545 'K','SPNET';
+	@p_syorikbn		K
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGT200k
+	@kensu_tbl_id	WGT200KK
+	@sjgymid		'623'
+	@tiym\@data_tiym	'202001'	GDGYM..GS010C
+
+jgyj528.bat gyp550 'K','SPNET';
+	@p_syorikbn		K
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGT300k
+	@kensu_tbl_id	WGT300KK
+	@data_file_id	WGT300K.TXT
+	@kensu_file_id	WGT300KK.TXT
+	@sjgymid		'624'
+	@tiym\@data_tiym	'202001'	GDGYM..GS010C
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGT300K		S:\spnetul\WGT300K.TXT
+	TRUNCATE TABLE GDSJWK..WGT300Kk		S:\spnetul\WGT300KK.TXT
+	
+jgyj529.bat gyp555 'K','SPNET';
+	@p_syorikbn		K
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGT300k
+	@kensu_tbl_id	WGT300KK
+	@sjgymid		'624'
+	@tiym\@data_tiym	'202001'	GDGYM..GS010C
+	@data_sonzai	1
+	GDSJWK..WGT300K --> GDGYM..GT200
+	
+jgyj611.bat gyp170 'S','SPNET';
+	@p_syorikbn		S
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS330S
+	@kensu_tbl_id	WGS330SK
+	@data_file_id	WGS330S.TXT
+	@kensu_file_id	WGS330SK.TXT
+	@sjgymid		'708'
+	@tiym\@data_tiym	'202001'	GDGYM..GS010C
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGS330S		S:\spnetul\WGS330S.TXT
+	TRUNCATE TABLE GDSJWK..WGS330Sk		S:\spnetul\WGS330SK.TXT
+	
+	
+jgyj612.bat gyp175 'S','SPNET';
+	@p_syorikbn		S
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS330S
+	@kensu_tbl_id	WGS330SK
+	@sjgymid		'708'
+	@tiym\@data_tiym	'202001'	GDGYM..GS010C
+	@data_sonzai	1
+	GDSJWK..WGS330S --> GDGYM..GS330 syubt <> '0' + 多个限制条件，目前的数据只查出一条
+	GDSJWK..WGS330S --> GDGYM..GS330S syubt <> '0' 也只有一条数据
+	GDSJWK..WGS330S --> GDGYM..GS331 syubt <> '0' + 多个限制条件，目前的数据只查出一条
+	GDSJWK..WGS330S --> GDGYM..GS331S syubt <> '0' 也只有一条数据
+	UPDATE GC055 SET
+          sjrvfrg = 1                                         -- 送受信PGM処理ﾌﾗｸﾞ (0=未処理,1=処理済)
+        , sjjbfrg = 1                                         -- 検証処理PGMﾌﾗｸﾞ   (0=未処理,1=処理済)
+        , sjsmfrg = 1                                         -- F/L作成PGM処理ﾌﾗｸﾞ(0=未処理,1=処理済)
+	在执行这个batch前，要update GDSJWK..WGS330S set TIYM = '202001' ; SET @sql_no = 15有判断对象年月
+	
+jgyj613.bat gyp830 '7';
+	@p_syorikbn		'7'
+	@tiym\@data_tiym	'202001'	GDGYM..GC005V02
+	@S10_CNT		0
+	@S11_CNT		0
+	@S13_CNT		0
+	@S12_CNT		0
+	@upkbn			'7'
+	GDGYM..GS330 --> GDGYM..GS330
+	GDGYM..GS330s --> GDGYM..GS330s
+	GDGYM..GS331 --> GDGYM..GS331
+	GDGYM..GS331S --> GDGYM..GS331S
+	GDGYM..GS330 --> GDGYM..GS333		UPDATE GS333 FROM GI005C
+	GDGYM..GS330s --> GDGYM..GS333S		UPDATE GS333S FROM GI005C
+	GDGYM..GS333 --> GDGYM..GS332		UPDATE GS332 FROM GI005C
+	GDGYM..GS333S --> GDGYM..GS332S		UPDATE GS332S FROM GI005C
+	UPDATE GC055 WITH(TABLOCK)
+            SET SJATFRG   = 1
+			KAFLG     = 1
+            STPFLG    = 1
+
+
+jgyj621.bat gyp150 'S','SPNET';
+	@p_syorikbn		S
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGP015S
+	@kensu_tbl_id	WGP015SK
+	@data_file_id	WGP015S.TXT
+	@kensu_file_id	WGP015SK.TXT
+	@sjgymid		'710'
+	@tiym\@data_tiym	'202001'	GDGYM..GS010C
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGP015S		S:\spnetul\WGP015S.TXT
+	TRUNCATE TABLE GDSJWK..WGP015Sk		S:\spnetul\WGP015SK.TXT
+	造数据：
+	INSERT INTO [dbo].[WGP015S]([TIYM], [KYOKU], [KYKBN], [GRPCD], [MISECD], [HAICD], [JYUYM1], [HYOCHGFRG1], [JYUYM2], [HYOCHGFRG2], [JYUYM3], [HYOCHGFRG3], [JYUYM4], [HYOCHGFRG4], [JYUYM5], [HYOCHGFRG5], [JYUYM6], [HYOCHGFRG6], [JYUYM7], [HYOCHGFRG7], [JYUYM8], [HYOCHGFRG8], [JYUYM9], [HYOCHGFRG9], [JYUYM10], [HYOCHGFRG10], [JYUYM11], [HYOCHGFRG11], [JYUYM12], [HYOCHGFRG12], [JYUYM13], [HYOCHGFRG13], [JYUYM14], [HYOCHGFRG14], [JYUYM15], [HYOCHGFRG15], [IDOYM], [IDOMISECD], [IDOHAICD], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES ('201912  ', '23', '00', '6130', '095', '0007', '199404  ', '1', '199404  ', '1', '200504  ', '1', '200504  ', '1', '0       ', '1', '201003  ', '1', '0       ', '1', '201003  ', '1', '0       ', '1', '200311  ', '1', '199611  ', '1', '0       ', '1', '0       ', '1', '0       ', '1', '0       ', '1', '0       ', '000', '0000', '7', '2000-09-14 13:41:49.000  ', '2010-03-01 08:04:41.000  ', 'GPP005         ');
+	WGP015S.TXT：
+	201912  	23	00	6130	095	0007	199404  	1	199404  	1	200504  	1	200504  	1	0       	1	201003  	1	0       	1	201003  	1	0       	1	200311  	1	199611  	1	0       	1	0       	1	0       	1	0       	1	0       	000	0000	7	2000-09-14 13:41:49.000  	2010-03-01 08:04:41.000  	GPP005         
+	
+jgyj622.bat gyp155 'S','SPNET';
+	@p_syorikbn		S
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGP015S
+	@kensu_tbl_id	WGP015SK
+	@sjgymid		'710'
+	@tiym\@data_tiym	'202001'	GDGYM..GS010C
+	GDSJWK..WGP015S -->  GDGYM..GP015 insert/uodate
+	UPDATE GC055
+                SET
+                    sjrvfrg = 1                                         -- 送受信PGM処理ﾌﾗｸﾞ (0=未処理,1=処理済)
+                  , sjjbfrg = 1                                         -- 検証処理PGMﾌﾗｸﾞ   (0=未処理,1=処理済)
+                  , sjsmfrg = 1                                         -- F/L作成PGM処理ﾌﾗｸﾞ(0=未処理,1=処理済)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
