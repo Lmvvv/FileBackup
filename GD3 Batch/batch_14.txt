@@ -1,0 +1,321 @@
+jgjj830.bat gjp830 %1,'GJP830';
+	@p_login_id		'GJP830'
+	@p_ip			172.29.231.61
+	@system_nitiji	2019-12-19 14:46:01.000
+	@p_tiym			202001
+	UPDATE GJ005 SET gj005.kanri    = @c_kanrino
+	
+	cmd r:\sjwrk\jgjj830.bat GD3DBP03 GDGYM
+
+jgyj251.bat gjp120;
+	@import_dir			S:\spnetul\
+	@IMPORT_FILE		WGJ010B.TXT
+	@IMPORT_KNSU_FILE	WGJ010BK.TXT
+	TRUNCATE TABLE GDSJWK..WGJ010B		S:\spnetul\WGJ010B.TXT
+	TRUNCATE TABLE GDSJWK..WGJ010Bk		S:\spnetul\WGJ010BK.TXT 
+	GDSJWK..WGJ010B --> GDGYM..GJ010C
+	GDSJWK..WGJ010B --> GDGYM..GJ020
+	
+jgyj100.bat gyp840;
+	@tougetu			202001
+	@tiym				201911
+	@tiym_next			201912
+	@HHPJSTR			200204
+	@bcp_fir_dir		R:\GDMail
+	@S01_CNT			40
+	@S02_CNT			0
+	@S03_CNT
+	if               @S01_CNT >= 0 and @S01_CNT < 47  
+		begin 
+			set @upkbn = '1'   
+		set @upkbn_gs290 = '1'
+		end
+		  else if          @S02_CNT >= 0 and @S02_CNT < 47  
+		begin 
+		set @upkbn = '5'   
+		set @upkbn_gs290 = '5'
+		end
+
+		  else if          @S03_CNT >= 0 and @S03_CNT < 47  
+		begin 
+		set @upkbn = '6'   
+		set @upkbn_gs290 = '5'
+		end
+	GDGYM..GS310 --> GDGYM..gs315
+	UPDATE gs315 with(rowlock) set SKIN
+	DELETE FROM GS290
+	UPDATE GS290 SET KYUUYO
+	UPDATE GS290 SET SIREKIN
+	IF @HHPJSTR > @tiym
+	UPDATE  GS290 SET HOJYOHI
+	ELSE
+	UPDATE GS290 SET   JYOSEI
+	UPDATE  GS290 SET HOJYOHI
+	UPDATE GS290 SET SYUEKI
+	R:\GDMail\GYP840+ @kyoku + '.txt'
+
+jgycr02.bat gyp905;
+	@data_file_id			CREGE060.TXT
+	@kensu_file_id			CREGE060K.TXT
+	@data_tiym				202001
+	@tiym_previous			201912
+	@tiym_previous_2		201910
+	@bcp_exe				D:\SQLTOOLS\BINN\BCP.EXE
+	@bcp_database			GDGYM
+	@bcp_server				172.29.231.14
+	@data_file_dir			S:\creditdl
+	GDGYM..GE060 --> S:\creditdl\CREGE060.TXT
+	GDGYM..GE060 --> S:\creditdl\CREGE060K.TXT
+	
+
+jgxj461.bat gyp680 'N';
+	@p_syorikbn			'N'
+	@data_tbl_id		WGJ006N
+	@kensu_tbl_id		WGJ006NK
+	@data_file_id		WGJ006N.TXT
+	@kensu_file_id		WGJ006NK.TXT
+	@tiym				202001
+	@data_ym			202001
+	@data_ym_c			'202001'
+	@tiym				201912
+	@data_ym_pre		201912
+	@data_ym_pre_c		'201912'
+	@bcp_exe_dir		D:\SQLTOOLS\BINN
+	@bcp_server			172.29.231.14
+	@bcp_database		GDGYM
+	@bcp_txt_dir		S:\spnetdl
+	@bcp_tblname_wk		GDWK..SC125W
+	TRUNCATE TABLE GDWK..SC125W
+	GDGYM..GJ005 --> GDWK..SC125W
+	GDWK..SC125W --> S:\spnetdl\WGJ006N.TXT
+	GDWK..SC125W --> S:\spnetdl\WGJ006NK.TXT
+	
+jgxj441.bat gyp820 'N';
+	@p_syorikbn			'N'
+	@data_view_id		WGE070V01
+	@kensu_view_id		WGE070KV01
+	@data_file_id		WGE070N.TXT
+	@kensu_file_id		WGE070NK.TXT
+	@tiym				202001
+	@data_tiym			202001
+	@bcp_exe			D:\SQLTOOLS\BINN\BCP.EXE
+	@bcp_database		GDGYM
+	@bcp_server			172.29.231.14
+	@data_file_dir		S:\spnetdl
+	GDGYM..WGE070V01 --> S:\spnetdl\WGE070N.TXT
+	GDGYM..WGE070KV01 --> S:\spnetdl\WGE070NK.TXT
+	
+jgxj431.bat gyp815 'N';
+	@p_syorikbn			'N'
+	@data_view_id		WGE060V01
+	@kensu_view_id		WGE060KV01
+	@data_file_id		WGE060N.TXT
+	@kensu_file_id		WGE060NK.TXT
+	@tiym				202001
+	@data_tiym			202001
+	@bcp_exe			D:\SQLTOOLS\BINN\BCP.EXE
+	@bcp_database		GDGYM
+	@bcp_server			172.29.231.14
+	@data_file_dir		S:\spnetdl
+	GDGYM..WGE060V01 --> S:\spnetdl\WGE060N.TXT
+	GDGYM..WGE060KV01 --> S:\spnetdl\WGE060NK.TXT
+
+jgxj600.bat GXP600 0
+	@p_nendo			202002
+	EXEC @rc = gsp010 @p_sijikbn = '1', @p_erkbn   = 0 OUTPUT 
+	
+	EXEC @rc = gkp005 @p_login_id = ''                  -- SHIKYOKU.INIから該当項目セット
+                , @p_ip       = ''                  -- SHIKYOKU.INIから該当項目セット
+                , @p_nendo    = 202002            -- 確定対象年月
+                , @p_flg      = 0                   -- 処理フラグ
+		exec @iret = GKP010 '','',202002,0
+	
+	EXEC @rc = gkp505 @p_login_id = ''                  -- SHIKYOKU.INIから該当項目セット
+                 , @p_ip       = ''                  -- SHIKYOKU.INIから該当項目セット
+                 , @p_nendo    = @p_nendo            -- 確定対象年月
+                 , @p_flg      = 0                   -- 処理フラグ
+		 exec @iret = GKP510 @p_login_id,@p_ip,@p_nendo
+	
+	EXEC @rc = gzp005
+	
+	EXEC @rc = GJP170
+
+
+	gsp010	@p_sijikbn = '1', @p_erkbn   = 0
+		@p_sijikbn		'1'
+		@p_erkbn		0
+		@tiym			202002
+		@ztiym			202001
+		@kensyo_cursor_allocate		1
+		@kensyo_cursor_open			1
+		@kensyo_cursor2_allocate	0
+		@kensyo_cursor2_open		0
+		@tiym						202002
+		@ztiym						202001
+		SET @sql_no = 27
+		@kensyo_shitensu			2
+		修改GS010的honmise，保证只有两条数据
+		@shiten_add					0
+		log文件输出：PRINT @kensyo_kyoku+@kensyo_misecd
+		
+		SET @sql_no = 31
+        @syuryo_check_cursor_allocate	1
+		@syuryo_check_cursor_open		1
+		
+		SET @sql_no = 37
+		update GT100 set eym = 202001 where kyoku = '01' and misecd = '128' ;
+
+	gkp005 @p_login_id = '', @p_ip       = '', @p_nendo    = 202002, @p_flg      = 0                   -- 処理フラグ
+		@kaflg			0
+		@stpflg			0
+		GKP010 '','',202002,0
+			@p_flag			0
+			@isqlline		3
+			SET @isqlline = 49
+			保证@ibuf = @rank_max
+
+jgsj015.bat gsp015;
+	GSP010	@gsp010_sijikbn  = '2'  , @gsp010_erkbn = 0 ; 
+		@p_sijikbn		'2'
+		@p_erkbn		0
+		@tiym			202002
+		@ztiym			202001
+
+jgqj005.bat gqp026;
+	@p_tiym			201912
+	UPDATE GC005 WHERE TIYM = @p_tiym AND SJGYMID = 'Q01'
+	@p_tiym_zen		201911
+	DELETE FROM GQ025  WITH(ROWLOCK) WHERE GQ025.TIYM = @p_tiym
+	DELETE FROM GQ040  WITH(ROWLOCK)  WHERE GQ040.TIYM = @p_tiym
+	DELETE FROM GQ045  WITH(ROWLOCK)  WHERE GQ045.TIYM = @p_tiym
+	
+	GDGYM..GJ020 --> GDGYM..GQ040 WHERE tiym = @p_tiym and TENSYU = '2' and HDAIHAI = '1' 
+	GDGYM..GJ020 --> GDGYM..GQ045 WHERE tiym = @p_tiym and TENSYU = '1' and HDAIHAI != '1' AND TDAIHAI = '1' 
+	
+	@daicnt			5
+	@hknisu			28
+	@ritu			1.1
+	
+	GDGYM..GS010C --> GDGYM..GQ025
+
+jgxj331.bat gyp605 'P';
+	@p_syorikbn			'P'
+	@data_tbl_id		WGS010P
+	@kensu_tbl_id		WGS010PK
+	@data_file_id		WGS010P.TXT
+	@kensu_file_id		WGS010PK.TXT
+	@tiym				202001
+	@syori_ym			202001
+	@data_ym			202001
+	@data_yym			202002
+	@data_yyym			202003
+	@syori_ym			201912
+	@syori_ym_c			201912
+	@data_ym_c			202001
+	@data_yym_c			202002
+	@data_yyym_c		202003
+	@bcp_exe_dir		D:\SQLTOOLS\BINN
+	@bcp_server			172.29.231.14
+	@bcp_database		GDGYM
+	@bcp_txt_dir		S:\spnetdl
+	TRUNCATE TABLE GDWK..SC005W
+	GDGYM..GS010 --> GDWK..SC005W
+	GDWK..SC005W --> S:\spnetdl\WGS010P.TXT
+	GDWK..SC005W --> S:\spnetdl\WGS010PK.TXT
+
+jgxj321.bat gyp800 'K';
+	@p_syorikbn			'K'
+	@data_file_id		WGE030.TXT
+	@kensu_file_id		WGE030K.TXT
+	@tiym				202002
+	@data_tiym			202001
+	@upnitiji			2020-05-19 15:04:29.040
+	GDGYM..GE030 --> GDGYM..GE070 500
+	
+	TRUNCATE TABLE gdsjwk..WGE030
+	GDGYM..GE030 --> gdsjwk..WGE030	KCHGKBN = '2' 935
+	GDGYM..GE030 --> gdsjwk..WGE030 KCHGKBN = '5' 935
+	GDGYM..GE030 --> gdsjwk..WGE030 KCHGKBN = '1' 16
+	GDGYM..GE030 --> gdsjwk..WGE030 KCHGKBN = '1' 11
+	
+	@bcp_exe			D:\SQLTOOLS\BINN\BCP.EXE
+	@bcp_database		GDGYM
+	@data_file_dir		S:\spnetdl
+	
+	gdsjwk..WGE030 --> S:\spnetdl\WGE030.TXT
+	gdsjwk..WGE030 --> S:\spnetdl\WGE030K.TXT
+
+jgxj311.bat gyp600 'K';
+	@p_syorikbn			'K'
+	@data_file_id		WGB045.TXT
+	@kensu_file_id		WGB045K.TXT
+	@sSJGYMID1    		'B11' 
+	@sSJGYMID2    		'B13' 
+	@sSJGYMID1_pre		'B10' 
+	@sSJGYMID2_pre		'B12' 
+	@sUKEKBN1      		'2'  
+	@sUKEKBN2      		'4' 
+	@tiym				201912
+	@syori_ym			201912
+	@data_ym			201912
+	@data_ym_nxt		202001
+	@data_ym_pre		201911
+	@bcp_exe_dir		D:\SQLTOOLS\BINN
+	@bcp_database		GDGYM
+	@bcp_txt_dir		S:\spnetdl
+	@P_UKEFROM			20191114
+	@P_UKETO			20191130
+	GBP015	@sUKEKBN2 = '2', @data_ym_c = '201912', @P_UKEFROM = 20191114, @P_UKETO = 20191130
+		@TOUGETU		202001
+		@KAFLG			0
+		@ZENGETU		201912
+		GDGYM..GB010 --> GDGYM..GB045 tiym = 202001 UKEKBN = '2'
+	
+	 TRUNCATE TABLE GDWK..SC110W
+	 GDGYM..GB045 --> GDWK..SC110W
+	 GDWK..SC110W --> S:\spnetdl\WGB045.TXT
+	 GDWK..SC110W --> S:\spnetdl\WGB045K.TXT
+
+INSERT INTO [dbo].[GC005]([TIYM], [SJGYMID], [KYOKU], [KYKBN], [KAFLG], [STPFLG], [KANITIJI], [UPNITIJI], [UPCLIENT]) VALUES (201912, 'B03', '99', '00', 1, 1, NULL, '2020-05-18 12:28:28.627', 'GYP600         ');
+
+
+jgxj201.bat gyp690 'A';
+	@p_syorikbn			
+	@tiym				202001
+	@lha32_dir			%SYSTEMROOT%\System32\
+	@plan_file_dir		\\172.29.231.14\SHPLAN$\
+	@plan_file			SHPLAN-202001.lzh'
+	@transfer_file_dir	S:\spnetdl\
+	@transfer_file		SHPLAN.LZH
+	if exist S:\spnetdl\SHPLAN.LZH  del  S:\spnetdl\SHPLAN.LZH /q
+
+jmnp006.bat mnp006;
+	@getdate			2019-12-22 16:03:38
+	@tiym				201911
+	@bcp_database		GDKaikei
+	@bcp_wkdatabase		GDKaikei
+	@bcp_txt_dir		S:\creditul
+	DELETE FROM GDKaikei..W_TYH943 ;
+	DELETE FROM GDKaikei..W_TYH430 ;
+	@data_file_id		'TYH943'
+	S:\creditul\TYH943 --> GDKaikei..W_TYH943
+	S:\creditul\TYH943 --> GDKaikei..W_TYH430
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

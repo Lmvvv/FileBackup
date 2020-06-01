@@ -1,0 +1,944 @@
+jgyj431.bat gyp220 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS285H
+	@kensu_tbl_id	WGS285HK
+	@data_file_id	WGS285H.TXT
+	@kensu_file_id	WGS285HK.TXT
+	@sjgymid		'502'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGS285H		S:\spnetul\WGS285H.TXT
+	TRUNCATE TABLE GDSJWK..WGS285Hk		S:\spnetul\WGS285HK.TXT
+
+jgyj432.bat gyp225 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS285H
+	@kensu_tbl_id	WGS285HK
+	@data_file_id	WGS285H.TXT
+	@kensu_file_id	WGS285HK.TXT
+	@sjgymid		'502'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		201912
+	GDSJWK..WGS285H --> GDGYM..GS285
+	
+	用到的SQL：
+	update GDSJWK..WGS285H set TIYM = CONVERT(char(6), DATEADD(month, -2, CONVERT(datetime, STR( (SELECT  MAX(tiym) FROM GS010C) * 100 + 1))), 112), 
+		kfprtcntr = '1', kfprtnor = '1', RPRTCNTT = '1', RPRTNOT = '1' ;	
+	update GDSJWK..WGS285HK set TIYM = (SELECT  MAX(tiym) FROM GS010C) ;
+	update GDGYM..GC055 set sjsmfrg = 0 where tiym = 202002  AND sjgymid = '502' ;
+
+jgyj421.bat gyp180 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS310H
+	@kensu_tbl_id	WGS310HK
+	@data_file_id	WGS310H.TXT
+	@kensu_file_id	WGS310HK.TXT
+	@sjgymid		'501'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGS310H		S:\spnetul\WGS310H.TXT
+	TRUNCATE TABLE GDSJWK..WGS310Hk		S:\spnetul\WGS310HK.TXT
+
+jgyj422.bat gyp185 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS310H
+	@kensu_tbl_id	WGS310HK
+	@sjgymid		'501'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@zztiym			201912
+	@data_tiym		201912
+	@data_ztiym		201911
+	@data_zztiym	201910
+	@upnitiji		2019-12-19 14:06:59.173
+	hincd < '20'	@gk040c_hakkonisu = 31
+	hincd >= '20'	@gk040c_hakkonisu = 33
+	GDSJWK..WGS310H --> GDGYM..GS310
+	@data_sonzai = 0; INSERT tiym = @data_zztiym
+	@data_sonzai = 0; INSERT tiym = data_ztiym
+	
+	SQL:
+	update GDGYM..GC055 set sjsmfrg = 0 where tiym = 202002 and kyoku = '16' and misecd = '015' AND sjgymid = '501' ;
+	update GDSJWK..WGS310H set tiym = CONVERT(char(6), DATEADD(month, -2, CONVERT(datetime, STR((SELECT MAX(tiym) FROM GDGYM..GS010C) * 100 + 1))), 112) 
+		where kyoku = '16' AND misecd = '015' ;
+	update GDSJWK..WGS310H set 
+		yusoryo = (CASE yusoryo  WHEN '0' THEN '1' else yusoryo END) ,
+		ztbusu = (CASE ztbusu  WHEN '0' THEN '1' else ztbusu END)  ;
+	UPDATE GDSJWK..WGS310H 
+		SET hmbusu = ( CASE hmbusu WHEN '0' THEN '1' ELSE hmbusu END ),
+		kdkryo = ( CASE kdkryo WHEN '0' THEN '1' ELSE kdkryo END ),
+		yusoryo = ( CASE yusoryo WHEN '0' THEN '1' ELSE yusoryo END ),
+		hfnbusu = ( CASE hfnbusu WHEN '0' THEN '1' ELSE hfnbusu END ),
+		sybusu = ( CASE sybusu WHEN '0' THEN '1' ELSE sybusu END ),
+		ztbusu = ( CASE ztbusu WHEN '0' THEN '1' ELSE ztbusu END ),
+		urinbusu = ( CASE urinbusu WHEN '0' THEN '1' ELSE urinbusu END ),
+		kfdosu = ( CASE kfdosu WHEN '0' THEN '1' ELSE kfdosu END ),
+		credosu = ( CASE credosu WHEN '0' THEN '1' ELSE credosu END ),
+		ztdosu = ( CASE ztdosu WHEN '0' THEN '1' ELSE ztdosu END ),
+		atodosu = ( CASE atodosu WHEN '0' THEN '1' ELSE atodosu END );
+
+jgyj411.bat gyp140 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGR025H
+	@kensu_tbl_id	WGR025HK
+	@data_file_id	WGR025H.TXT
+	@kensu_file_id	WGR025HK.TXT
+	@sjgymid		'517'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGR025H		S:\spnetul\WGR025H.TXT
+	TRUNCATE TABLE GDSJWK..WGR025Hk		S:\spnetul\WGR025HK.TXT
+
+jgyj412.bat gyp145 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGR025H
+	@kensu_tbl_id	WGR025HK
+	@sjgymid		'517'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_sonzai	1
+	GDSJWK..WGR025H --> GDGYM..GR025
+	
+	SQL:
+	update GDGYM..GC055 set sjsmfrg = 0 where tiym = 202002 and kyoku = '16' and misecd = '015' AND sjgymid = '517' ;
+	update GDSJWK..WGR025H SET tiym = (SELECT MAX(tiym) FROM GS010C) ;
+	
+jgyj391.bat gyp270 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGD015H
+	@kensu_tbl_id	WGD015HK
+	@data_file_id	WGD015H.TXT
+	@kensu_file_id	WGD015HK.TXT
+	@sjgymid		'518'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGD015H		S:\spnetul\WGD015H.TXT
+	TRUNCATE TABLE GDSJWK..WGD015Hk		S:\spnetul\WGD015HK.TXT
+
+jgyj392.bat gyp275 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGD015H
+	@kensu_tbl_id	WGD015HK
+	@data_file_id	WGD015H.TXT
+	@kensu_file_id	WGD015HK.TXT
+	@sjgymid		'518'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	GDSJWK..WGD015H --> gdgym..gd015
+	
+	SQL:
+		update GDGYM..GC055 set sjsmfrg = 0 where tiym = 202002 and kyoku = '16' and misecd = '015' AND sjgymid = '518' ;
+		update GDSJWK..WGD015H set tiym = (SELECT MAX(tiym) FROM GS010C) ;
+		
+jgyj381.bat gyp160 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGP010H
+	@kensu_tbl_id	WGP010HK
+	@data_file_id	WGP010H.TXT
+	@kensu_file_id	WGP010HK.TXT
+	@sjgymid		'512'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGP010H		S:\spnetul\WGP010H.TXT
+	TRUNCATE TABLE GDSJWK..WGP010Hk		S:\spnetul\WGP010HK.TXT
+
+jgyj382.bat gyp165 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGP010H
+	@kensu_tbl_id	WGP010HK
+	@data_file_id	WGP010H.TXT
+	@kensu_file_id	WGP010HK.TXT
+	@sjgymid		'512'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	GDSJWK..WGP010H --> GDGYM..GP010W
+	
+	SQL:
+	update GDGYM..GC055 set sjsmfrg = 0 where tiym = 202002 and kyoku = '16' and misecd = '015' AND sjgymid = '512' ;
+	update GDSJWK..WGP010H set tiym = (SELECT MAX(tiym) FROM GS010C) ;
+	
+jgyj371.bat gyp150 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGP015H
+	@kensu_tbl_id	WGP015HK
+	@data_file_id	WGP015H.TXT
+	@kensu_file_id	WGP015HK.TXT
+	@sjgymid		'510'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGP015H		S:\spnetul\WGP015H.TXT
+	TRUNCATE TABLE GDSJWK..WGP015Hk		S:\spnetul\WGP015HK.TXT
+	
+	S:\spnetul\WGP015H.TXT 数据：
+		202002  	16	00	0110	015	0020	198009  	1	199204  	1	199204  	1	199204  	1	199204  	1	199204  	1	199204  	1	199204  	1	199204  	1	199204  	1	199204  	1	199204  	1	199204  	1	199204  	1	199204  	1	1       	000	0000	0	2000-11-14 13:37:07.000  	2008-03-01 05:28:16.000  	GEP020 001 0021
+	S:\spnetul\WGP015HK.TXT  数据：
+		201912  	16	015	1          	2019-12-01 12:57:47.000  	2019-12-01 12:58:03.000  
+
+jgyj372.bat gyp155 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGP015H
+	@kensu_tbl_id	WGP015HK
+	@sjgymid		'510'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	GDSJWK..WGP015H --> GDGYM..GP015
+	
+	SQL:
+	update GDGYM..GC055 set sjsmfrg = 0 where tiym = 202002 and kyoku = '16' and misecd = '015' AND sjgymid = '510' ;
+	update GDSJWK..WGP015H set tiym = (SELECT MAX(tiym) FROM GS010C) ;
+	
+jgyj361.bat gyp130 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGD030H
+	@kensu_tbl_id	WGD030HK
+	@data_file_id	WGD030H.TXT
+	@kensu_file_id	WGD030HK.TXT
+	@sjgymid		'516'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGD030H		S:\spnetul\WGD030H.TXT
+	TRUNCATE TABLE GDSJWK..WGD030Hk		S:\spnetul\WGD030HK.TXT
+
+jgyj362.bat gyp135 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGD030H
+	@kensu_tbl_id	WGD030HK
+	@data_file_id	WGD030H.TXT
+	@kensu_file_id	WGD030HK.TXT
+	@sjgymid		'516'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	GDSJWK..WGD030H --> GDGYM..GD030
+	
+	SQL:
+	update GDGYM..GC055 set sjsmfrg = 0 where tiym = 202002 and kyoku = '16' and misecd = '015' AND sjgymid = '516' ;
+	update GDSJWK..WGD030H set tiym = (SELECT MAX(tiym) FROM GS010C) ;
+
+jgyj351.bat gyp120 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGD010H
+	@kensu_tbl_id	WGD010HK
+	@data_file_id	WGD010H.TXT
+	@kensu_file_id	WGD010HK.TXT
+	@sjgymid		'515'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGD010H		S:\spnetul\WGD010H.TXT
+	TRUNCATE TABLE GDSJWK..WGD010Hk		S:\spnetul\WGD010HK.TXT
+
+jgyj352.bat gyp125 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGD010H
+	@kensu_tbl_id	WGD010HK
+	@data_file_id	WGD010H.TXT
+	@kensu_file_id	WGD010HK.TXT
+	@sjgymid		'515'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_file_dir	S:\spnetul
+	GDSJWK..WGD010H --> GDGYM..GD010
+
+	SQL:
+	update GDGYM..GC055 set sjsmfrg = 0 where tiym = 202002 and kyoku = '16' and misecd = '015' AND sjgymid = '516' ;
+	update GDSJWK..WGD010H set tiym = (SELECT MAX(tiym) FROM GS010C) ;
+
+jgyj341.bat gyp110 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGD020H
+	@kensu_tbl_id	WGD020HK
+	@data_file_id	WGD020H.TXT
+	@kensu_file_id	WGD020HK.TXT
+	@sjgymid		'514'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGD020H		S:\spnetul\WGD020H.TXT
+	TRUNCATE TABLE GDSJWK..WGD020Hk		S:\spnetul\WGD020HK.TXT
+
+jgyj342.bat gyp115 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGD020H
+	@kensu_tbl_id	WGD020HK
+	@sjgymid		'514'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	GDSJWK..WGD020H --> GDGYM..GD020
+
+	SQL:
+	update GDGYM..GC055 set sjsmfrg = 0 where tiym = 202002 and kyoku = '16' and misecd = '015' AND sjgymid = '514' ;
+	update GDSJWK..WGD020H set tiym = (SELECT MAX(tiym) FROM GDGYM..GS010C) ;
+
+jgyj331.bat gyp100 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGD005H
+	@kensu_tbl_id	WGD005HK
+	@data_file_id	WGD005H.TXT
+	@kensu_file_id	WGD005HK.TXT
+	@sjgymid		'513'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGD005H		S:\spnetul\WGD005H.TXT
+	TRUNCATE TABLE GDSJWK..WGD005Hk		S:\spnetul\WGD005HK.TXT
+
+jgyj332.bat gyp105 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGD005H
+	@kensu_tbl_id	WGD005HK
+	@sjgymid		'513'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	GDSJWK..WGD005H --> GDGYM..GD005
+
+	SQL:
+	update GDGYM..GC055 set sjsmfrg = 0 where tiym = 202002 and kyoku = '16' and misecd = '015' AND sjgymid = '513' ;
+	update GDSJWK..WGD005H set tiym = (SELECT MAX(tiym) FROM GDGYM..GS010C) ;
+
+jgyj321.bat gyp250 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS340H
+	@kensu_tbl_id	WGS340HK
+	@data_file_id	WGS340H.TXT
+	@kensu_file_id	WGS340HK.TXT
+	@sjgymid		'509'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGS340H		S:\spnetul\WGS340H.TXT
+	TRUNCATE TABLE GDSJWK..WGS340Hk		S:\spnetul\WGS340HK.TXT
+
+jgyj322.bat gyp255 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS340H
+	@kensu_tbl_id	WGS340HK
+	@sjgymid		'509'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	GDSJWK..WGS340H --> GDGYM..GS340
+
+	SQL:
+	update GDGYM..GC055 set sjsmfrg = 0 where tiym = 202002 and kyoku = '16' and misecd = '015' AND sjgymid = '509' ;
+	update GDSJWK..WGD005H set tiym = (SELECT MAX(tiym) FROM GDGYM..GS010C) ;
+
+jgyj311.bat gyp170 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS330H
+	@kensu_tbl_id	WGS330HK
+	@data_file_id	WGS330H.TXT
+	@kensu_file_id	WGS330HK.TXT
+	@sjgymid		'508'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_file_dir	S:\spnetul
+	TRUNCATE TABLE GDSJWK..WGS330H		S:\spnetul\WGS330H.TXT
+	TRUNCATE TABLE GDSJWK..WGS330Hk		S:\spnetul\WGS330HK.TXT
+
+jgyj312.bat gyp175 'H','SPNET';
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS330H
+	@kensu_tbl_id	WGS330HK
+	@data_file_id	WGS330H.TXT
+	@kensu_file_id	WGS330HK.TXT
+	@sjgymid		'508'
+	@p_upkbn		'5'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	GDSJWK..WGS330H --> GDGYM..GS330
+	GDSJWK..WGS330H --> GDGYM..GS330S
+	DELETE FROM GS331
+	DELETE FROM GS331S
+	@gb010_gosu		20200201
+	GDSJWK..WGS330H --> GDGYM..GS331
+	GDSJWK..WGS330H --> GDGYM..GS331S
+	
+	SQL:
+	update GDGYM..GC055 set sjsmfrg = 0 where tiym = 202002 and kyoku = '16' and misecd = '015' AND sjgymid = '508' ;
+	update GDSJWK..WGS330H set tiym = (SELECT MAX(tiym) FROM GDGYM..GS010C) ;
+	INSERT INTO [dbo].[GB010]([TIYM], [KYOKU], [KYKBN], [MISECD], [EKI], [HINCD], [GOSU], [REASON], [JCYKIKAN], [INPYMD], [INPHMS], [PRINTCD], [HAN], [RATE], [CHAN], [SIMEKYOKU], [BSUKBN], [BKNOFLG], [STUIKA], [INPBUSU], [ZBUSU], [MBUSU], [YOBISI], [HSOBUSU], [INPKYOKU], [INPKYKBN], [UPDFLG1], [UPDFLG2], [SIMEFLG], [SIMEBI], [REPFLG], [KNSFLG], [KNSBI], [ACCPTFLG], [ACCPTTMD], [ACCPTKYOKU], [ACCPTKYKBN], [REACCPTFLG], [SPINPBUSU], [SPZBUSU], [CFMFLG], [CFM1], [CFM2], [CFM3], [CFM4], [CFM5], [CFM6], [CFM7], [CFM8], [CFM9], [ADNITIJI], [UPNITIJI], [UPCLIENT]) 
+		VALUES (202002, '16', '00', '015', '076', '01', 20200201, '01', '2', 20191213, 0, '131', '0', '00', '000', '99', '1', 0, '1', 1, 1, 1, 0, 1, '16', '00', 0, 0, 1, 20191213, 0, 1, 0, 1, 0, '  ', '  ', 0, 0, 0, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2019-12-13 18:19:59.160', '2019-12-13 18:19:59.160', 'TEIKI PROCESS  ');
+
+jgyj313.bat gyp830 '5';
+	@p_syorikbn		'5'
+	@tiym			202001	SELECT TOUGETU FROM GC005V02 WHERE SJGYMID='C01' AND KYOKU='99' AND KYKBN='00' ;
+	@S10_CNT		1
+	@S11_CNT		1
+	@S13_CNT		1
+	@S10_CNT		48
+	@S11_CNT		2
+	@S13_CNT		48
+	@S12_CNT		47
+	@upkbn			'5'
+	GDGYM..GS330 --> GDGYM..GS330		tiym = SELECT TOUGETU FROM GC005V02 WHERE SJGYMID='C01' AND KYOKU='99' AND KYKBN='00' ;
+	GDGYM..GS330S --> GDGYM..GS330S		tiym = SELECT TOUGETU FROM GC005V02 WHERE SJGYMID='C01' AND KYOKU='99' AND KYKBN='00' ;
+	GDGYM..GS331 --> GDGYM..GS331		tiym = SELECT TOUGETU FROM GC005V02 WHERE SJGYMID='C01' AND KYOKU='99' AND KYKBN='00' ;
+	GDGYM..GS331S --> GDGYM..GS331S		tiym = SELECT TOUGETU FROM GC005V02 WHERE SJGYMID='C01' AND KYOKU='99' AND KYKBN='00' ;
+	GDGYM..GS330 --> GDGYM..GS333
+	GDGYM..GS330S --> GDGYM..GS333S
+	GDGYM..GS333 --> GDGYM..GS332
+	GDGYM..GS33S --> GDGYM..GS332S
+	
+	SQL:
+	update gdgym..gc015 set DATA1 = '202002' where TIYM = 202003 and TBLID = 'IKJYM' and TBLKEY = '16' ;
+	update gdgym..gc005 set kaflg = 1 where tiym =  202001 and SJGYMID='S10' AND KYOKU <> '99' AND KYKBN='00' ;
+	update gdgym..gc005 set kaflg = 1 where tiym =  202001 and SJGYMID='S11' AND KYOKU = '16' AND KYKBN='00' ;
+	update gdgym..gc005 set kaflg = 1 where tiym =  202001 and SJGYMID='S13' AND KYOKU <> '99' AND KYKBN='00' ;
+	update GDGYM..GC005 set KAFLG = 0 where TIYM  = 202001 and SJGYMID = 'S11' and KYKBN = '00' and KYOKU not in ('16', '99') ;
+	INSERT INTO [dbo].[GC055]([TIYM], [KYOKU], [MISECD], [SJGYMID], [SJRVFRG], [SJJBFRG], [SJSMFRG], [SJATFRG], [UPNITIJI], [UPCLIENT]) 
+		VALUES (202001, '23', '116', '508', 0, 0, 1, 0, '2019-12-13 20:15:29.153', 'SPNET          ');
+	update GDGYM..GS010C set eym = '201912' where  tiym = 202001 AND kyoku = '23' ;
+	INSERT INTO [dbo].[GS330]([TIYM], [KYOKU], [MISECD], [UPKBN], [HAICD], [AREACD], [SIBUCD], [SYUBT], [ZAIKBN], [EKI], [KANRINO], [PBUSU], [ZOUKA], [GEN], [KCBUSU], [YCBUSU], [KSPKOSU], [CYUSISU], [YSBUSU], [TSETAI], [NEWDOSU], [NEWTUKI], [RERDOSU], [RETUKI], [HFDOSU], [SKDOSU], [YUDOSU], [KYHFDOSU], [KYSKDOSU], [KYYUDOSU], [ENDDOSU], [NEWBSU], [REBSU], [CTNBSU], [KNHNBSU], [ENDBSU]) 
+		VALUES (201912, '23', '015', '7', '0049', '0246', '0042', '1', '1', '999', '0340', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0);
+
+这五个batch，式样书的执行顺序有误，按照下面顺序
+260 jgyj481.bat  261 gjyj482.bat  219 jbpo012.bat  220 jbpo013.bat 
+jgyj300.bat gyp840; 未生成指定文件r:\gdmail\gyp84098.txt
+	@mail_taisyo_honsya	0
+	@tougetu		202002
+	@tiym			201912
+	@tiym_next		202001
+	@HHPJSTR		200204
+	@bcp_fir_dir	R:\GDMail
+	根据@S01_CNT @S02_CNT @S03_CNT 值的不同，@upkbn取的值也不同
+	IF @S01_CNT >= 0 AND @S01_CNT < 47 BEGIN
+		SET @upkbn = '1' 
+		SET @upkbn_gs290 = '1' 
+	END ELSE IF	@S02_CNT >= 0 	AND @S02_CNT < 47 BEGIN		
+		SET @upkbn = '5' 
+		SET @upkbn_gs290 = '5' 
+	END ELSE IF	@S03_CNT >= 0 	AND @S03_CNT < 47 BEGIN
+		SET @upkbn = '6' 
+		 SET @upkbn_gs290 = '5' 
+	END
+	@S01_CNT		46
+	@S02_CNT		47
+	@S03_CNT		47
+	@upkbn			'1'
+	@upkbn_gs290	'1'
+	@kyoku			'16'
+	在 @upkbn = '1' 和 @upkbn_gs290 = '1' 情况下
+	GDGYM..GS310 --> GDGYM..GS315 
+		where TIYM = 201912 AND KYOKU = '16'  and hincd >= '20'  AND UPKBN = '1' 并且GS315不存在相应的数据
+		GDGYM..GS310 目前存在两条数据 GDGYM..GS315 无数据 UPDATE gs315 with(rowlock) set SKIN
+	GDGYM..GS310 --> GDGYM..GS290 
+		where TIYM = 201912 AND KYOKU = '16'  AND UPKBN = '1'
+		GDGYM..GS310 1数据 GDGYM..GS290 0数据
+	GDGYM..GS290 --> GDGYM..GS290
+	@kyokunm		富　山
+	R:\GDMail\GYP84016.txt
+	
+	注意：
+		authors_cursor查出的数据只取了支局是16的
+		在运行前保证GS315没有想要的数据
+	
+	if @upkbn = '6'
+		GDGYM..GS305 WHERE @upkbn = '5' --> GDGYM..GS305 WHERE @upkbn = '6'
+	
+	SQL:
+	在 @upkbn = '1' 和 @upkbn_gs290 = '1' 情况下插入数据
+		INSERT INTO [dbo].[GS310]([TIYM], [UPKBN], [KYOKU], [MISECD], [HINCD], [HMBUSU], [KDKRYO], [YUSORYO], [HFNBUSU], [SYBUSU], [ZTBUSU], [URINBUSU], [KFDOSU], [ZTDOSU], [UAVBUSU], [UYAVBUSU], [UPNITIJI], [CREDOSU], [ATODOSU]) VALUES (201912, '1', '16', '015', '01', 2416, 4672544, 0, 70064, 1897, 0, 70064, 399, 0, 2502, 2179, '2019-12-17 10:21:29.000', 10, 0);
+		INSERT INTO [dbo].[GS310]([TIYM], [UPKBN], [KYOKU], [MISECD], [HINCD], [HMBUSU], [KDKRYO], [YUSORYO], [HFNBUSU], [SYBUSU], [ZTBUSU], [URINBUSU], [KFDOSU], [ZTDOSU], [UAVBUSU], [UYAVBUSU], [UPNITIJI], [CREDOSU], [ATODOSU]) VALUES (201912, '1', '16', '015', '02', 283, 31130, 0, 566, 150, 0, 566, 0, 0, 566, 309, '2019-12-17 10:21:29.000', 0, 0);
+		INSERT INTO [dbo].[GS310]([TIYM], [UPKBN], [KYOKU], [MISECD], [HINCD], [HMBUSU], [KDKRYO], [YUSORYO], [HFNBUSU], [SYBUSU], [ZTBUSU], [URINBUSU], [KFDOSU], [ZTDOSU], [UAVBUSU], [UYAVBUSU], [UPNITIJI], [CREDOSU], [ATODOSU]) VALUES (201912, '1', '16', '015', '03', 128, 7040, 0, 128, 61, 0, 128, 0, 0, 128, 134, '2019-12-17 10:21:29.000', 0, 0);
+		INSERT INTO [dbo].[GS310]([TIYM], [UPKBN], [KYOKU], [MISECD], [HINCD], [HMBUSU], [KDKRYO], [YUSORYO], [HFNBUSU], [SYBUSU], [ZTBUSU], [URINBUSU], [KFDOSU], [ZTDOSU], [UAVBUSU], [UYAVBUSU], [UPNITIJI], [CREDOSU], [ATODOSU]) VALUES (201912, '1', '16', '015', '05', 94, 5170, 0, 94, 53, 0, 94, 0, 0, 94, 98, '2019-12-17 10:21:29.000', 0, 0);
+		INSERT INTO [dbo].[GS310]([TIYM], [UPKBN], [KYOKU], [MISECD], [HINCD], [HMBUSU], [KDKRYO], [YUSORYO], [HFNBUSU], [SYBUSU], [ZTBUSU], [URINBUSU], [KFDOSU], [ZTDOSU], [UAVBUSU], [UYAVBUSU], [UPNITIJI], [CREDOSU], [ATODOSU]) VALUES (201912, '1', '16', '015', '07', 1304, 272536, 0, 1304, 802, 0, 1304, 0, 0, 1304, 1321, '2019-12-17 10:21:29.000', 0, 0);
+		INSERT INTO [dbo].[GS310]([TIYM], [UPKBN], [KYOKU], [MISECD], [HINCD], [HMBUSU], [KDKRYO], [YUSORYO], [HFNBUSU], [SYBUSU], [ZTBUSU], [URINBUSU], [KFDOSU], [ZTDOSU], [UAVBUSU], [UYAVBUSU], [UPNITIJI], [CREDOSU], [ATODOSU]) VALUES (201912, '1', '16', '015', '21', 311, 586857, 0, 9019, 158, 0, 9019, 0, 0, 322, 323, '2019-12-17 10:21:29.000', 0, 0);
+		INSERT INTO [dbo].[GS310]([TIYM], [UPKBN], [KYOKU], [MISECD], [HINCD], [HMBUSU], [KDKRYO], [YUSORYO], [HFNBUSU], [SYBUSU], [ZTBUSU], [URINBUSU], [KFDOSU], [ZTDOSU], [UAVBUSU], [UYAVBUSU], [UPNITIJI], [CREDOSU], [ATODOSU]) VALUES (201912, '1', '16', '015', '22', 66, 19338, 0, 264, 47, 0, 264, 0, 0, 53, 66, '2019-12-17 10:21:29.000', 0, 0);
+		authors_cursor支局只取16
+		update GDGYM..GC055 set SJSMFRG = 0 where TIYM=202002 and SJGYMID ='101' and KYOKU != '16' ;
+		update GDGYM..GC005 set KAFLG = 0 where TIYM = 201912 AND SJGYMID ='S01' AND KYOKU   = '16' ;
+		
+		update gdgym..gc015 set data1 = '201902' where tblid = 'ikjym' and rtrim(tblkey) = '16' ;
+
+jgyj301.bat gpp005 'H';
+	@p_syorikbn		'H'
+	@sHYOKBN_ALL1 = '0'
+    @sHYOKBN_ALL2 = '0'
+    @sHYOKBN_ALL3 = '0'
+	@gymid1			'510'
+	@gymid2			'512'
+	@getdate		2019-12-19 14:46:02
+	@tiym			202002
+	@EJYUYM			202004
+	@SJYUYM			202004
+	修改GS010C的MISECD字段
+	@reccnt			2
+	@sHYOKBN1 = '0'	变为 '1'
+    @sHYOKBN2 = '0'
+    @sHYOKBN3 = '0'
+	GDGYM..GP010W --> GDGYM..GP010
+	IF @HAICD <> '0000'
+		如果GDGYM..GP015存在KYOKU，MISECD，HAICD和上面出入数据相同的数据 ，就更新；不存在，就插入
+	        
+    IF @sHYOKBN1='1'	--退職記念品
+		GDGYM..GK010C --> GDGYM..GC005 202001 P01
+	-- 業務管理マスタ更新
+    --退職記念品
+    IF @sHYOKBN_ALL1='1'
+		INSERT INTO GC005 (TIYM, SJGYMID, KYOKU, KYKBN, KAFLG, STPFLG, KANITIJI, UPNITIJI,UPCLIENT)
+                    VALUES (@tiym, 'P01', '99', '00', 1, 1, @getdate, @getdate,@pgm_id)
+	
+	GDGYM..GP010W --> GDGYM..GP025
+	
+	SQL:
+	update GDGYM..GP020 set ULMM1 = 2, ULMM2 = 2 where TIYY = 2020 ;
+
+
+
+
+
+jgjj825.bat gjp825 'GJP825';
+	@p_ip			'GJP825'
+	@system_nitiji	2019-12-19 16:35:34.000
+	@p_tiym			202002
+	@ztiym			202001
+	UPDATE gj005
+		SET gj005.grpcd = gs010c.grpcd
+	
+	SQL:
+	update gdgym..gc055 set sjrvfrg = 1, sjjbfrg = 1, sjsmfrg = 1, sjatfrg = 0 where tiym = 202002 AND sjgymid = '513' AND kyoku = '16' ;
+	update gdgym..gc055 set sjrvfrg = 1, sjjbfrg = 1, sjsmfrg = 1, sjatfrg = 0 where tiym = 202002 AND sjgymid = '508' AND kyoku = '16' ;
+	update gdgym..GJ005 set MISECD = '015' where TIYM = 202002 and KYOKU = '16' and AREACD = '0001' ;
+
+
+
+jgjj830.bat gjp830 %1,'GJP830';
+	@p_login_id		172.29.231.61
+	@p_ip			'GJP830'
+	@system_nitiji	2019-12-19 18:04:39.000
+	@p_tiym			202002
+	UPDATE GJ005 SET gj005.kanri    = @c_kanrino 
+
+jgyj302.bat gpp025;
+	@gs010c_tiym		201902
+
+jbpo012.bat bpo010
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS375H
+	@kensu_tbl_id	WGS375HK
+	@data_file_id	WGS375H.TXT
+	@kensu_file_id	WGS375HK.TXT
+	@sjgymid		'525'
+	@tiym\@data_tiym	'202001'	GDGYM..GC005V02
+	@data_file_dir	S:\BPOul
+	TRUNCATE TABLE GDSJWK..WGS375H		S:\BPOul\WGS375H.TXT
+	TRUNCATE TABLE GDSJWK..WGS375HK		S:\BPOul\WGS375HK.TXT
+	UPDATE [GDGYM]..[GC055] 
+		SET sjrvfrg = 1 -- 送受信PGM処理ﾌﾗｸﾞ (0=未処理, 1=処理済)
+		,upnitiji = dbo.GETDATE2 () -- 最終更新日時
+		,upclient = @p_system -- 最終更新ｸﾗｲｱﾝﾄIPｱﾄﾞﾚｽ
+		WHERE
+			tiym = @tiym 
+			AND kyoku = @kensu_tbl_kyoku 
+			AND misecd = @kensu_tbl_misecd 
+			AND sjgymid = @sjgymid
+
+jbpo013.bat bpo011
+	@p_syorikbn		H
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS375H
+	@kensu_tbl_id	WGS375HK
+	@sjgymid		'525'
+	@p_upkbn		'5'
+	@tiym\@data_tiym	'202002'	GDGYM..GC005V02
+	GDSJWK..WGS375H --> GDGYM..GS375	先delete，然后insert
+
+	SQL:
+	update GDGYM..GC055 set sjsmfrg = 0 where tiym = 202002 and kyoku = '16' and misecd = '015' AND sjgymid = '525' ;
+	update GDSJWK..WGS375H set tiym = ( SELECT  TOUGETU FROM GC005V02 WITH(NOLOCK) WHERE SJGYMID = 'C01' AND KYOKU = '99' AND KYKBN = '00' );
+
+jbpo010.bat bpo010 'B','SPNET';
+	@p_syorikbn		B
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS375B
+	@kensu_tbl_id	WGS375BK
+	@data_file_id	WGS375B.TXT
+	@kensu_file_id	WGS375BK.TXT
+	@sjgymid		'425'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	@data_file_dir	S:\BPOul
+	TRUNCATE TABLE GDSJWK..WGS375B		S:\spnetul\WGS375B.TXT
+	TRUNCATE TABLE GDSJWK..WGS375Bk		S:\spnetul\WGS375BK.TXT
+
+jbpo011.bat bpo011 'B','SPNET'; 
+	@p_syorikbn		B
+	@p_system		SPNET
+	@work_db		GDSJWK
+	@data_tbl_id	WGS375B
+	@kensu_tbl_id	WGS375BK
+	@sjgymid		'425'
+	@p_upkbn		'4'
+	@tiym			202002	SELECT MAX(tiym) FROM GDGYM..GS010C ;
+	@data_tiym		202002
+	GDSJWK..WGS375B --> GDGYM..GS375
+
+	SQL:
+	update GDGYM..GC055 set sjsmfrg = 0 where tiym = 202002 and (( kyoku = '08' and misecd = '036' ) or ( kyoku = '18' and misecd = '012' )) AND sjgymid = '425' ;
+	update GDSJWK..WGS375B set tiym = (SELECT TOUGETU FROM GDGYM..GC005V02 WITH(NOLOCK) WHERE SJGYMID = 'C01' AND KYOKU = '99' AND KYKBN = '00') ;
+	
+jgyj100.bat gyp840;
+	@mail_taisyo_honsya	0
+	@tougetu		202002
+	@tiym			201912
+	@tiym_next		202001
+	@HHPJSTR		200204
+	@bcp_fir_dir	R:\GDMail
+	根据@S01_CNT @S02_CNT @S03_CNT 值的不同，@upkbn取的值也不同
+	IF @S01_CNT >= 0 AND @S01_CNT < 47 BEGIN
+		SET @upkbn = '1' 
+		SET @upkbn_gs290 = '1' 
+	END ELSE IF	@S02_CNT >= 0 	AND @S02_CNT < 47 BEGIN		
+		SET @upkbn = '5' 
+		SET @upkbn_gs290 = '5' 
+	END ELSE IF	@S03_CNT >= 0 	AND @S03_CNT < 47 BEGIN
+		SET @upkbn = '6' 
+		 SET @upkbn_gs290 = '5' 
+	END
+	、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
+	@S01_CNT		46
+	@S02_CNT		47
+	@S03_CNT		47
+	@upkbn			'1'
+	@upkbn_gs290	'1'
+	@kyoku			'16'
+	在 @upkbn = '1' 和 @upkbn_gs290 = '1' 情况下
+	GDGYM..GS310 --> GDGYM..GS315 
+		where TIYM = 201912 AND KYOKU = '16'  and hincd >= '20'  AND UPKBN = '1' 并且GS315不存在相应的数据
+		GDGYM..GS310 目前存在两条数据 GDGYM..GS315 无数据 
+		UPDATE gs315 with(rowlock) set SKIN 现在是 0
+	GDGYM..GS310 --> GDGYM..GS290 
+		where TIYM = 201912 AND KYOKU = '16'  AND UPKBN = '1'
+		GDGYM..GS310 1数据 GDGYM..GS290 0数据
+		UPDATE GS290 SET EIGYOKEIHI 现在是 0
+		UPDATE GS290 SET KYUUYO		现在是 0
+		UPDATE GS290 SET SIREKIN	现在是 0
+		UPDATE GS290 SET   JYOSEI	现在是 0
+		UPDATE  GS290 SET HOJYOHI
+		UPDATE GS290 SET SYUEKI
+		UPDATE GS290 SET RIEKI
+	GDGYM..GS290 --> GDGYM..GS290
+	@kyokunm		富　山
+	R:\GDMail\GYP84016.txt
+	
+	注意：
+		authors_cursor查出的数据只取了支局是16的
+		在运行前保证GS315没有想要的数据
+	
+	if @upkbn = '6'
+		GDGYM..GS305 WHERE @upkbn = '5' --> GDGYM..GS305 WHERE @upkbn = '6'
+	
+	SQL:
+	在 @upkbn = '1' 和 @upkbn_gs290 = '1' 情况下插入数据
+		INSERT INTO [dbo].[GS310]([TIYM], [UPKBN], [KYOKU], [MISECD], [HINCD], [HMBUSU], [KDKRYO], [YUSORYO], [HFNBUSU], [SYBUSU], [ZTBUSU], [URINBUSU], [KFDOSU], [ZTDOSU], [UAVBUSU], [UYAVBUSU], [UPNITIJI], [CREDOSU], [ATODOSU]) VALUES (201912, '1', '16', '015', '01', 2416, 4672544, 0, 70064, 1897, 0, 70064, 399, 0, 2502, 2179, '2019-12-17 10:21:29.000', 10, 0);
+		INSERT INTO [dbo].[GS310]([TIYM], [UPKBN], [KYOKU], [MISECD], [HINCD], [HMBUSU], [KDKRYO], [YUSORYO], [HFNBUSU], [SYBUSU], [ZTBUSU], [URINBUSU], [KFDOSU], [ZTDOSU], [UAVBUSU], [UYAVBUSU], [UPNITIJI], [CREDOSU], [ATODOSU]) VALUES (201912, '1', '16', '015', '02', 283, 31130, 0, 566, 150, 0, 566, 0, 0, 566, 309, '2019-12-17 10:21:29.000', 0, 0);
+		INSERT INTO [dbo].[GS310]([TIYM], [UPKBN], [KYOKU], [MISECD], [HINCD], [HMBUSU], [KDKRYO], [YUSORYO], [HFNBUSU], [SYBUSU], [ZTBUSU], [URINBUSU], [KFDOSU], [ZTDOSU], [UAVBUSU], [UYAVBUSU], [UPNITIJI], [CREDOSU], [ATODOSU]) VALUES (201912, '1', '16', '015', '03', 128, 7040, 0, 128, 61, 0, 128, 0, 0, 128, 134, '2019-12-17 10:21:29.000', 0, 0);
+		INSERT INTO [dbo].[GS310]([TIYM], [UPKBN], [KYOKU], [MISECD], [HINCD], [HMBUSU], [KDKRYO], [YUSORYO], [HFNBUSU], [SYBUSU], [ZTBUSU], [URINBUSU], [KFDOSU], [ZTDOSU], [UAVBUSU], [UYAVBUSU], [UPNITIJI], [CREDOSU], [ATODOSU]) VALUES (201912, '1', '16', '015', '05', 94, 5170, 0, 94, 53, 0, 94, 0, 0, 94, 98, '2019-12-17 10:21:29.000', 0, 0);
+		INSERT INTO [dbo].[GS310]([TIYM], [UPKBN], [KYOKU], [MISECD], [HINCD], [HMBUSU], [KDKRYO], [YUSORYO], [HFNBUSU], [SYBUSU], [ZTBUSU], [URINBUSU], [KFDOSU], [ZTDOSU], [UAVBUSU], [UYAVBUSU], [UPNITIJI], [CREDOSU], [ATODOSU]) VALUES (201912, '1', '16', '015', '07', 1304, 272536, 0, 1304, 802, 0, 1304, 0, 0, 1304, 1321, '2019-12-17 10:21:29.000', 0, 0);
+		INSERT INTO [dbo].[GS310]([TIYM], [UPKBN], [KYOKU], [MISECD], [HINCD], [HMBUSU], [KDKRYO], [YUSORYO], [HFNBUSU], [SYBUSU], [ZTBUSU], [URINBUSU], [KFDOSU], [ZTDOSU], [UAVBUSU], [UYAVBUSU], [UPNITIJI], [CREDOSU], [ATODOSU]) VALUES (201912, '1', '16', '015', '21', 311, 586857, 0, 9019, 158, 0, 9019, 0, 0, 322, 323, '2019-12-17 10:21:29.000', 0, 0);
+		INSERT INTO [dbo].[GS310]([TIYM], [UPKBN], [KYOKU], [MISECD], [HINCD], [HMBUSU], [KDKRYO], [YUSORYO], [HFNBUSU], [SYBUSU], [ZTBUSU], [URINBUSU], [KFDOSU], [ZTDOSU], [UAVBUSU], [UYAVBUSU], [UPNITIJI], [CREDOSU], [ATODOSU]) VALUES (201912, '1', '16', '015', '22', 66, 19338, 0, 264, 47, 0, 264, 0, 0, 53, 66, '2019-12-17 10:21:29.000', 0, 0);
+		authors_cursor支局只取16
+		update GDGYM..GC055 set SJSMFRG = 0 where TIYM=202002 and SJGYMID ='101' and KYOKU != '16' ;
+		update GDGYM..GC005 set KAFLG = 0 where TIYM = 201912 AND SJGYMID ='S01' AND KYOKU   = '16' ;
+		
+		update gdgym..gc015 set data1 = '201902' where tblid = 'ikjym' and rtrim(tblkey) = '16' ;
+	
+	
+	@S01_CNT		47
+	@S02_CNT		46
+	@S03_CNT		47
+	@upkbn			'5'
+	@upkbn_gs290	'5'
+	@kyoku			'16'
+	在 @upkbn = '5' 和 @upkbn_gs290 = '5' 情况下
+	DELETE FROM GS290 
+	GDGYM..GS285 UPKBN = '1' --> GDGYM..GS285  UPKBN = '5' 
+	GDGYM..GS305 UPKBN = '1' --> GDGYM..GS305  UPKBN = '5'
+	GDGYM..GS310 UPKBN = '1' --> GDGYM..GS310  UPKBN = '5' 
+	GDGYM..GS320 UPKBN = '1' --> GDGYM..GS320  UPKBN = '5'
+	GDGYM..GS335 UPKBN = '1' --> GDGYM..GS335  UPKBN = '5'
+	GDGYM..GS290 UPKBN = '1' --> GDGYM..GS290  UPKBN = '5'
+
+	SQL：
+	update GDGYM..gs010c set EYM = 202001, EFG ='1' where tiym =(select max(TIYM) from GDGYM..gs010c) and kyoku = '16' ;
+
+jgep011.bat GEP011 ;
+	@tiym		202002
+	@system_nitiji	2019-12-20 16:06:23
+	@system_nitiji_date		20191220
+ 
+
+jgxj600.bat GXP600
+	@ErrorBit		0
+	@kensyo_erkbn	0
+	@p_erkbn		0
+	@p_nendo		202002
+	gsp010 @p_sijikbn = '1'	@p_erkbn   = 0
+		@p_sijikbn		'1'
+		@p_erkbn		0
+		@tiym			202002
+		@ztiym			202001
+		@kensyo_cursor_allocate		0
+		@kensyo_cursor_open			0
+		@kensyo_cursor2_allocate	0
+		@kensyo_cursor2_open		0
+		@tiym						202002
+		@ztiym						202001
+		@kensyo_cursor_allocate		1
+		-- kensyo_cursor
+		@kensyo_cursor_allocate		1
+		@kensyo_cursor_open			0
+		-- kensyo_cursor2 有71条数据,gc025有@sql_no = 19、@sql_no = 23、@sql_no = 27的数据
+		
+		
+		@kensyo_shitensu			71
+		@shiten_add					0
+		
+		@syuryo_check_cursor_allocate	1
+		@syuryo_check_cursor_open		1
+		@p_erkbn						2
+		
+		-- ohai_check_cursor 有2条数据
+		@ohai_check_cursor_allocate		0
+		@ohai_check_cursor_open			0
+		
+		-- koseikanri_check_cursor
+		@koseikanri_check_cursor_allocate	1
+		@koseikanri_check_cursor_open	1
+		
+		-- iten_check_cursor 有1条数据
+		@iten_check_cursor_allocate		1
+		@iten_check_cursor_open			1
+		
+		-- ipcd_check_cursor
+		@ipcd_check_cursor_allocate		1
+		@ipcd_check_cursor_open			1
+		
+	gkp005 @p_login_id = '' , @p_ip = '' , @p_nendo = 202002 , @p_flg      = 0  
+		GCP985 insert into gc045
+		@kaflg			0
+		@stpflg			0
+		GKP010 @p_login_id = '', @p_ip = '', @p_nendo = 202002, @p_flg = 0
+			@level			0
+			@isqlline		1
+			@isqlline		3
+			@mtextbuf		'gk010'
+			@ibuf			0
+			@isqlline		7
+		
+		update GS010 set misekbn = '1' where  tiym = 202002 and updkbn <> 'D' ;
+
+jgsj005.bat gsp015;
+	-- 半角/全角ｽﾍﾟｰｽのｾｯﾄ
+    @s_space			' '
+    @d_space			'　'
+
+
+jgzj010.bat gzp010;
+	@getdate		2019-12-19 16:50:10
+	@p_nendo		202002
+	@nxt_tiym		202003
+	@pre_tiym		202001
+	GDGYM..GZ005 --> GDGYM..GZ005C 	@p_nendo 202002
+	GDGYM..GZ005 --> GDGYM..GZ010   @p_nendo 202002
+	GDGYM..GZ005 --> GDGYM..GZ015	@p_nendo 202002
+	GDGYM..GZ020 --> GDGYM..GZ020C	@p_nendo 202002
+	GDGYM..GZ005 --> GDGYM..GZ005C	202003
+	GDGYM..GZ025 --> GDGYM..GZ025C	202003
+
+jgqj005.bat gqp026;
+	@p_tiym			201912
+	UPDATE GC005
+		WHERE TIYM = @p_tiym AND SJGYMID = 'Q01'
+	@p_tiym_zen		201911
+	DELETE FROM GQ025	878
+	DELETE FROM GQ040	183
+	DELETE FROM GQ045	111
+	
+	GDGYM..GJ020 --> GDGYM..GQ040
+	GDGYM..GJ020 --> GDGYM..GQ045
+	
+	@daicnt			5
+	@hknisu			28
+	@ritu			1.1
+	
+	GDGYM..GS010C --> GDGYM..GQ025
+	DELETE FROM GQ025
+	UPDATE GQ025  WITH(ROWLOCK)  SET ITAKUHAIFU
+	UPDATE GQ025  WITH(ROWLOCK)  SET KOSTSK
+	
+	@nendo			2019
+	
+	UPDATE GQ025  WITH(ROWLOCK)  SET MIMAIKIN
+	
+	@ytiym			2002001
+	
+	UPDATE GH015  WITH(ROWLOCK)  SET SYOYM = @p_tiym WHERE SINENDO = @tounen
+	INSERT INTO GC005 VALUES(202001,'Q01','99','00',0,0,NULL,CONVERT(VARCHAR,dbo.GETDATE2(),120),GQP025)
+	insert 完就update UPDATE GC005 SET KAFLG = 1,KANITIJI = CONVERT(VARCHAR,dbo.GETDATE2(),120),UPNITIJI = CONVERT(VARCHAR,dbo.GETDATE2(),120),UPCLIENT = @p_ipadrs WHERE TIYM = @p_tiym AND SJGYMID = 'Q01'
+
+
+
+jgxj600.bat GXP600 0
+	EXEC @rc = gsp010 @p_sijikbn = '1', @p_erkbn   = 0 OUTPUT 
+	
+	EXEC @rc = gkp005 @p_login_id = ''                  -- SHIKYOKU.INIから該当項目セット
+                , @p_ip       = ''                  -- SHIKYOKU.INIから該当項目セット
+                , @p_nendo    = 202002            -- 確定対象年月
+                , @p_flg      = 0                   -- 処理フラグ
+		exec @iret = GKP010 '','',202002,0
+	
+	EXEC @rc = gkp505 @p_login_id = ''                  -- SHIKYOKU.INIから該当項目セット
+                 , @p_ip       = ''                  -- SHIKYOKU.INIから該当項目セット
+                 , @p_nendo    = @p_nendo            -- 確定対象年月
+                 , @p_flg      = 0                   -- 処理フラグ
+		 exec @iret = GKP510 @p_login_id,@p_ip,@p_nendo
+	
+	EXEC @rc = gzp005
+	
+	EXEC @rc = GJP170
+
+
+	gsp010	@p_sijikbn = '1', @p_erkbn   = 0
+		@p_sijikbn		'1'
+		@p_erkbn		0
+		@tiym			202002
+		@ztiym			202001
+		@kensyo_cursor_allocate		1
+		@kensyo_cursor_open			1
+		@kensyo_cursor2_allocate	0
+		@kensyo_cursor2_open		0
+		@tiym						202002
+		@ztiym						202001
+		SET @sql_no = 27
+		@kensyo_shitensu			2
+		修改GS010的honmise，保证只有两条数据
+		@shiten_add					0
+		log文件输出：PRINT @kensyo_kyoku+@kensyo_misecd
+		
+		SET @sql_no = 31
+        @syuryo_check_cursor_allocate	1
+		@syuryo_check_cursor_open		1
+		
+		SET @sql_no = 37
+		update GT100 set eym = 202001 where kyoku = '01' and misecd = '128' ;
+
+	gkp005 @p_login_id = '', @p_ip       = '', @p_nendo    = 202002, @p_flg      = 0                   -- 処理フラグ
+		@kaflg			0
+		@stpflg			0
+		GKP010 '','',202002,0
+			@p_flag			0
+			@isqlline		3
+			SET @isqlline = 49
+			保证@ibuf = @rank_max
+			
+jgsj015.bat gsp015;
+	GSP010	@gsp010_sijikbn  = '2'  , @gsp010_erkbn = 0 ; 
+		@p_sijikbn		'2'
+		@p_erkbn		0
+		@tiym			202002
+		@ztiym			202001
+			
+jgsj030.bat   gsp030;
+	@P_NENDO		202002
+	@PRV_TAISYOU_C	20200201
+	@PRV_TAISYOU_D	20200301
+	@PRV_TIYM_C		2020-03-01 00:00:00.000
+	@PRV_TIYM		202003
+	@COUNT_KENSU	3618
+	if @COUNT_KENSU != 0
+	GDGYM..GS070 --> GDGYM..GS070C
+	
+	DELETE GS070 WHERE TIYM = @P_NENDO
+	@P_NENDO		202001
+	DELETE GS070 WHERE TIYM <= CASE WHEN RIGHT(STR(@P_NENDO, 6), 2) <= '03' THEN @P_NENDO - 91 ELSE @P_NENDO - 3 END
+	
+jguj110.bat     
+jgkj515.bat    
+jgej030.bat    
+jgbj010.bat    
+GBP341    
+GBP392    
+jgsj025.bat      
+GJP140    
+GJP150    
+jgxj004c.bat

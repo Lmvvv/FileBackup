@@ -1,0 +1,139 @@
+-- gxp600数据准备
+update gdgym..GE120 set  ALERTKBN = 1 WHERE PLANB = 202002 AND ALERTCD = '13' ;
+--- GSP010数据准备
+-- @kensyo_shitensu = 2
+update GDGYM..GS010 set honmise = '001'
+where tiym = 202002 
+and (
+--   ( kyoku = '01'	and misecd = '107')
+--or ( kyoku = '01'	and misecd = '113')
+--or 
+( kyoku = '01'	and misecd = '128')
+or ( kyoku = '01'	and misecd = '130')
+or ( kyoku = '02'	and misecd = '017')
+or ( kyoku = '02'	and misecd = '018')
+or ( kyoku = '02'	and misecd = '019')
+or ( kyoku = '02'	and misecd = '024')
+or ( kyoku = '03'	and misecd = '024')
+or ( kyoku = '04'	and misecd = '034')
+or ( kyoku = '05'	and misecd = '019')
+or ( kyoku = '05'	and misecd = '020')
+or ( kyoku = '05'	and misecd = '023')
+or ( kyoku = '05'	and misecd = '026')
+or ( kyoku = '05'	and misecd = '027')
+or ( kyoku = '07'	and misecd = '035')
+or ( kyoku = '08'	and misecd = '044')
+or ( kyoku = '15'	and misecd = '035')
+or ( kyoku = '17'	and misecd = '018')
+or ( kyoku = '18'	and misecd = '012')
+or ( kyoku = '19'	and misecd = '018')
+or ( kyoku = '21'	and misecd = '034')
+or ( kyoku = '21'	and misecd = '037')
+or ( kyoku = '24'	and misecd = '035')
+or ( kyoku = '24'	and misecd = '036')
+or ( kyoku = '25'	and misecd = '014')
+or ( kyoku = '25'	and misecd = '019')
+or ( kyoku = '26'	and misecd = '059')
+or ( kyoku = '26'	and misecd = '061')
+or ( kyoku = '28'	and misecd = '148')
+or ( kyoku = '28'	and misecd = '153')
+or ( kyoku = '28'	and misecd = '161')
+or ( kyoku = '29'	and misecd = '056')
+or ( kyoku = '29'	and misecd = '106')
+or ( kyoku = '30'	and misecd = '005')
+or ( kyoku = '30'	and misecd = '159')
+or ( kyoku = '30'	and misecd = '162')
+or ( kyoku = '32'	and misecd = '013')
+or ( kyoku = '32'	and misecd = '015')
+or ( kyoku = '32'	and misecd = '016')
+or ( kyoku = '34'	and misecd = '046')
+or ( kyoku = '34'	and misecd = '058')
+or ( kyoku = '35'	and misecd = '036')
+or ( kyoku = '36'	and misecd = '021')
+or ( kyoku = '37'	and misecd = '025')
+or ( kyoku = '37'	and misecd = '030')
+or ( kyoku = '38'	and misecd = '533')
+or ( kyoku = '39'	and misecd = '027')
+or ( kyoku = '39'	and misecd = '032')
+or ( kyoku = '41'	and misecd = '021')
+or ( kyoku = '41'	and misecd = '023')
+or ( kyoku = '42'	and misecd = '021')
+or ( kyoku = '42'	and misecd = '023')
+or ( kyoku = '42'	and misecd = '031')
+or ( kyoku = '42'	and misecd = '032')
+or ( kyoku = '42'	and misecd = '035')
+or ( kyoku = '43'	and misecd = '028')
+or ( kyoku = '43'	and misecd = '035')
+or ( kyoku = '43'	and misecd = '037')
+or ( kyoku = '43'	and misecd = '040')
+or ( kyoku = '44'	and misecd = '026')
+or ( kyoku = '44'	and misecd = '028')
+or ( kyoku = '45'	and misecd = '025')
+or ( kyoku = '46'	and misecd = '038')
+or ( kyoku = '46'	and misecd = '041')
+or ( kyoku = '46'	and misecd = '042')
+or ( kyoku = '46'	and misecd = '043')
+or ( kyoku = '46'	and misecd = '044')
+or ( kyoku = '46'	and misecd = '045')
+or ( kyoku = '46'	and misecd = '054')
+or ( kyoku = '47'	and misecd = '017')
+);
+UPDATE [dbo].[GS010] SET [KYKBN] = '00', [GRPCD] = '0155', [MISENM] = '村＊　　＊人        ', [MISEKN] = 'ﾑﾗ** ***ﾄ      ', [MISEKBN] = '0', [POYA] = '099', [PKO] = '0996', [JUSYO1] = '名寄市＊＊＊＊＊＊＊＊＊＊＊０４                            ', [JUSYO2] = '                                        ', [TEL] = '99654-8-7099      ', [FAX] = '99654-8-7099      ', [SYM] = 200308, [KEIKEN] = 18, [EFG] = 0, [EYM] = 999999, [SEWAKBN] = 'S', [SEWMD] = 390218, [SEYMD] = 19640218, [NENREI] = 56, [TEIFLG] = '0', [NWAKBN] = 'S', [NWMD] = 580321, [NYMD] = 19830321, [TOKYU] = '18', [TOKYUCHG] = 0, [KOROKIN] = 164500, [REIGAI] = 0, [REIGAIFR] = 0, [REIGAITO] = 999999, [SENKEN] = '0', [HYAKU] = '0', [TOTI] = '0', [KAOKU] = '0', [SYOZKU] = '0', [GYAKU] = '02', [NEWKYK] = '00', [NEWMISE] = '000', [OLDKYK] = '00', [OLDMISE] = '000', [HONMISE] = '000', [RBUSU] = 3400, [KUIKTKBN] = '0', [KEIYAKU] = '0', [SSYM] = 0, [SKIKAN] = 0, [UPDKBN] = '0', [ADNITIJI] = '2003-05-07 17:05:23.000', [UPNITIJI] = '2019-11-12 18:21:46.143', [UPCLIENT] = 'ikou_user      ', [KEITAI1] = '990-8277-8799     ', [KEITAI2] = '990-3774-6799     ', [IPCODE] = '71791535', [NPIPCODE] = 'akt0125350', [NPSPCODE] = 'ner8397539', [KAZEITOUROKUNO] = NULL WHERE [TIYM] = 202002 AND [KYOKU] = '01' AND [MISECD] = '107';
+UPDATE [dbo].[GS010] SET [KYKBN] = '00', [GRPCD] = '0145', [MISENM] = '工＊　　＊幸        ', [MISEKN] = 'ｸﾄ** ***ｷ      ', [MISEKBN] = '0', [POYA] = '069', [PKO] = '0991', [JUSYO1] = '岩見沢＊＊＊＊＊＊＊＊＊＊－２                              ', [JUSYO2] = '                                        ', [TEL] = '9926-25-8699      ', [FAX] = '9926-25-8699      ', [SYM] = 200510, [KEIKEN] = 16, [EFG] = 0, [EYM] = 999999, [SEWAKBN] = 'S', [SEWMD] = 491229, [SEYMD] = 19741229, [NENREI] = 45, [TEIFLG] = '0', [NWAKBN] = 'S', [NWMD] = 500316, [NYMD] = 19750316, [TOKYU] = '16', [TOKYUCHG] = 0, [KOROKIN] = 157000, [REIGAI] = 0, [REIGAIFR] = 0, [REIGAITO] = 999999, [SENKEN] = '0', [HYAKU] = '2', [TOTI] = '0', [KAOKU] = '0', [SYOZKU] = '2', [GYAKU] = '59', [NEWKYK] = '00', [NEWMISE] = '000', [OLDKYK] = '00', [OLDMISE] = '000', [HONMISE] = '000', [RBUSU] = 3400, [KUIKTKBN] = '0', [KEIYAKU] = '0', [SSYM] = 0, [SKIKAN] = 0, [UPDKBN] = '0', [ADNITIJI] = '2005-08-01 13:37:52.000', [UPNITIJI] = '2019-11-12 18:21:46.153', [UPCLIENT] = 'ikou_user      ', [KEITAI1] = '990-8373-0199     ', [KEITAI2] = '990-3897-3699     ', [IPCODE] = '71791541', [NPIPCODE] = 'akt0125775', [NPSPCODE] = 'fwg1227176', [KAZEITOUROKUNO] = NULL WHERE [TIYM] = 202002 AND [KYOKU] = '01' AND [MISECD] = '113';
+-- iten_check_cursor
+update gdgym..gs010 set misekbn = 1 where tiym = 202002	AND honmise = '000' AND sym <= tiym AND eym >= 202001 ;
+
+-- gkp010数据备份 SET @isqlline = 48 SET @isqlline = 49
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '55', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.793', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '56', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.794', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '57', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.795', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '58', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.796', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '59', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.797', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '60', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.798', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '61', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.799', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '62', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.800', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '63', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.801', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '64', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.802', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '65', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.803', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '66', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.804', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '67', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.805', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '68', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.806', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '69', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.807', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '70', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.808', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '71', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.809', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '72', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.810', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '73', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.811', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '74', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.812', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '75', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.813', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '76', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.814', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '77', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.815', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '78', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.816', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '79', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.817', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '80', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.818', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '81', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.819', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '82', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.820', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '83', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.821', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '84', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.822', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '85', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.823', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '86', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.824', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '87', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.825', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '88', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.826', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '89', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.827', 'edash_ikou     ');
+INSERT INTO [dbo].[GK115]([TIYM], [RANK], [RANKBUSU], [UPDKBN], [ADNITIJI], [UPNITIJI], [UPCLIENT]) VALUES (202002, '90', 82, '0', '2019-10-11 23:43:33.793', '2019-10-11 23:43:33.828', 'edash_ikou     ');
+
+-- gsp015 数据备份
+update GDGYM..GC005 set kaflg = 1, stpflg = 0 where tiym = ( select MAX(tiym) FROM GDGYM..GC005 WITH(NOLOCK) ) and sjgymid = 'C01' AND kyoku = '99' AND kykbn = '00' ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
